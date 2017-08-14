@@ -1,0 +1,9 @@
+{% for item in latest %}
+
+    <h1><a href="news/{{news.slug}}">{{item.title}}</a></h1>
+
+    <div>
+    <h5><i>{{ item.body|truncatewords_html:100 }}</i></h5>
+    <br /><br /><br />
+    </div>
+{% endfor %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} MY IMMIDIATE TITLE {% endblock %}
+
+
+{% if latest_question_list %}
+
+{% block contents %}
+
+{% include 'news/holder.html' %}
+
+{% endblock %}
+
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+
