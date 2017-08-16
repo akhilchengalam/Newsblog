@@ -30,5 +30,6 @@ class News(models.Model):
     def get_absolute_url(self):
         return reverse('news_in_detail', kwargs={'slug': self.slug})
 
-    def get_url(self):
-        return 'https://infinite-fortress-79073.herokuapp.com%s'%(self.get_absolute_url())
+    class Meta:
+        ordering = ["posted"]
+        get_latest_by = "posted"

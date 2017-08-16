@@ -4,15 +4,14 @@
 
 {% block contents %}
 
-    {% for news in newscatagories.news_set.all %}
-
-    <h2>{{news.title}}</h2>
-
+ {% for item in newscatagory.news_set.all %}
 
         <div>
-             <h5><i>{{ news.body|truncatewords_html:120 }}</i></h5>
-             <br /><br /><br />
+             <h1><a href="% url 'news:detail' item.id">{{ item.title }}</a></h1>
         </div>
+         <p>Published: {{ item.posted }} </p>
+
+         <p>{{ item.body|truncatechars_html:200 | linebreaksbr }} <a href="{% url 'news:detail' item.id %}" >read more</a></p>
 
     {% endfor %}
 

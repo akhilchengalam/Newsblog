@@ -105,3 +105,11 @@ TEMPLATES = [
         },
     },
 ]
+
+
+LOGIN_REDIRECT_URL = 'news:home'
+
+
+#Email backend
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -27,20 +27,13 @@ class HomeView(generic.ListView):
 
 
 class NewsView(generic.ListView):
-    template_name = 'news/news_list.html'
     model = NewsCatagories
+    template_name = 'news/news_list.html'
+    context_object_name = 'category'
 
 
-    def get_context_data(self, **kwargs):
-        context = super(NewsView, self).get_context_data(**kwargs)
-        data = News.objects.order_by('-posted')
-        context['catag_news'] = data
-
-        newslist = NewsCatagories.objects.order_by('-id')
-        context['news_list'] = newslist
-
-        return context
-
-    def get_queryset(self, id, **kwargs):
-        return News.objects.filter()
+class DetailView(generic.DetailView):
+    model = News
+    template_name = 'news/detail.html'
+    context_object_name = 'news'
 
