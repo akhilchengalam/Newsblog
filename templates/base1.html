@@ -142,10 +142,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!----------------------------------------------  CONTENTS HTML  ---------------------------------------------------------------->
 <div class="mag-inner">
-	<div class="col-md-8">
+	<div class="col-md-8 mag-innert-left">
 		{% block contents %} {% endblock %}
 	</div>
-
+	<div class="col-md-4 mag-innert-right">
+		{% include 'asideblock.html' %}
+	</div>
 	 <div class="clearfix"></div>
 </div>
 <!---------------------------------------------- END  CONTENTS HTML  ---------------------------------------------------------------->

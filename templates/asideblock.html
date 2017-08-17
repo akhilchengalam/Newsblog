@@ -1,9 +1,24 @@
+<br /><br />
+<form method="get" action="news/search/">
+<div class="input-group">
+
+    <input class="form-control input-lg" type="text" placeholder="Search" name="key"></input>
+    <input type="hidden" value="1" name="p"></input>
+    <div class="input-group-btn">
+        <button class="btn btn-default btn-lg" type="submit">
+            <i class="glyphicon glyphicon-search">
+            </i>
+        </button>
+    </div>
+
+</div>
+</form>
 
 				  <div class="connect">
 				    <h4 class="side">Categories</h4>
 
 						{% for list in news_list %}
-					  <a href="{% url 'news:category' list.id %}"><h3><i> &nbsp;&nbsp;&nbsp;{{ list.title }}</i></h3></a> <br />
+					  <a href="{% url 'news:category' list.id %}"><h4><i> &nbsp;&nbsp;&nbsp;{{ list.title }}</i></h4></a> <br />
 						{% endfor %}
 
 			      </div>
@@ -12,37 +27,37 @@
 					  <div id="example1">
 			 	        <div style="opacity: 1; display: block;" id="owl-demo" class="owl-carousel text-center owl-theme">
 					      <div class="owl-wrapper-outer"><div style="width: 4800px; left: 0px; display: block;" class="owl-wrapper"><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p1.jpg" alt="">
 					     </div></div><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p2.jpg" alt="">
 					    </div></div><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p33.jpg" alt="">
 					    </div></div><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p1.jpg" alt="">
 					</div></div><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p1.jpg" alt="">
 					</div></div><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p2.jpg" alt="">
 					</div></div><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p33.jpg" alt="">
 					</div></div><div style="width: 300px;" class="owl-item"><div class="item">
-					
+
 							<img class="img-responsive lot" src="images/p1.jpg" alt="">
 					</div></div></div></div>
-						 
-						
-						
-					
-						
-						
-						
+
+
+
+
+
+
+
 				<div class="owl-controls clickable"><div class="owl-buttons"><div class="owl-prev"></div><div class="owl-next"></div></div></div></div>
 				</div>
 				<!-- requried-jsfiles-for owl -->
@@ -56,16 +71,16 @@
 												navigation : true,
 												navigationText :  true,
 												pagination : false,
-												responsiveBreakpoints: { 
-										portrait: { 
+												responsiveBreakpoints: {
+										portrait: {
 											changePoint:480,
 											visibleItems: 2
-										}, 
-										landscape: { 
+										},
+										landscape: {
 											changePoint:640,
 											visibleItems: 2
 										},
-										tablet: { 
+										tablet: {
 											changePoint:768,
 											visibleItems: 3
 										}
@@ -85,7 +100,7 @@
 											<input class="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" type="text">
 											<input value="submit" type="submit">
 										</form>
-										<p class="spam">We do not spam. We value your privacy!</p>
+
 									</div>
 							</div>
 							  <!--//end-sign-up-->

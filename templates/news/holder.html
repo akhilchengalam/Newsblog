@@ -1,9 +1,9 @@
 {% for item in latest %}
 
     <h1><a href="{% url 'news:detail' item.id %}">{{ item.title }}</a></h1>
-    <div>
+    <div class="container-fluid">
     <div class="date">
-        <p>Published: {{ item.posted }} </p>
+        <p>{{ item.posted }} </p>
     </div>
     <h5><i>{{ item.body|truncatewords_html:100 }}</i></h5>
     <br /><br /><br />

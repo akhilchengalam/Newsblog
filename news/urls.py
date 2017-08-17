@@ -8,7 +8,6 @@ urlpatterns = [
     # url(r'^cat/(?P<slug>[-\w]+)/', views.NewsView.as_view(), name='news_catag_list'),
     url(r'^newscatagory/(?P<pk>[0-9]+)/$', views.NewsView.as_view(), name='category'),
     url(r'^newsdetails/(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
-
-
+    url(r'^searchresults/(?P<pk>[0-9]+)/$', views.Searchview.as_view(), name='search'),
 
 ]
