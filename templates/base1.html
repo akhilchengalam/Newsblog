@@ -14,6 +14,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet" type="text/css" media="all" />
 <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
 <script src="{% static 'js/jquery.min.js' %}"> </script>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
@@ -50,25 +52,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!----------------------------------------------------------------------------------------------------------------------------->
 					{% if request.user.is_authenticated %}
-						<li><b>{{ request.user.username }}</b></li>
+						<li><div class="dropdown"><a class="dropdown" href="#" >{{ request.user.username }}<span class="caret"></span></a>
+							<div class="dropdown-content">
+								<a href="{% url 'profile' %}">Update Profile</a>
+								<a href="{% url 'updatepassword' %}">Change Password</a>
+							</div>
+						</div>
+							<!--<ul class="dropdown-menu">-->
+							<!--<div class="dropdown-content">-->
+							<!--<li><a href="#">Update Profile</a></li>-->
+							<!--<li><a href="{% url 'updatepassword' %}">Change Password</a></li></div>-->
+
+						<!--</ul>-->
+						</li>
+
 						<li><a href="contact.html"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
-						<li><a href="{% url 'user:logout' %}">Logout</a></li>
+						<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 					{% else %}
-						<li><a href="{% url 'user:signup' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-						<li><a href="{% url 'user:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						<li><a href="contact.html"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
+						<li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+						<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li><a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact </a></li>
 					{% endif %}
 
 
-
-
-
-
 <!----------------------------------------------------------------------------------------------------------------------------->
-
-
-
-
 
 				</ul>
 			</div>
@@ -155,5 +162,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <div class="copyright footer nav navbar-inverse">
-	<p>&copy; The Reporters News <a href="http://w3layouts.com/"><br />thereportersnews.com</a> </p>
+	<p>&copy; The Reporters News  </p>
 </div>

@@ -2,9 +2,10 @@
 {% block title %}LOGIN PAGE | USER PROFILE {% endblock %}
 {% block contents %}
 
-<div class="container" style="padding:25px 0px 25px 0px" align="center">
+<br /><br />
+<div class="container" align="center">
 
-  <div class="row col-sm-6 col-md-4">
+  <div >
       <h2>Login</h2>
       <form method="post">
         <fieldset>
@@ -12,11 +13,12 @@
           {{ form.as_p }}
           <div class="btn-group btn-block">
                       </div>
-          <button class="btn btn-block btn-info" type="submit">Login</button>
+          <button class="btn btn-info" type="submit" style="width:300px">Login</button>
         </fieldset>
         <br />
         <br />
-
+          <a href="{% url 'password_reset' %}">Forgot Password? </a>
+          <br /><br />
       </form>
 
 </div>

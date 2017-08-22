@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^news/', include('news.urls')),
     url(r'^useraccount/', include('user.urls')),
+    url(r'^', include('news.urls')),
+    url(r'^extras/', include('extras.urls')),
+
 ]

@@ -5,7 +5,7 @@
 {% block contents %}
 
 <div class="container">
-    <h2>Search key : {{ key }} </h2>
+    <h2>Here are your search results </h2><br />
 
     <!------------------PAGE CONTENTS----------------------------->
 
@@ -15,9 +15,10 @@
           {% for item in search_news %}
                   <div class="col-md-12 col-sm-6 col-xs-4 hero-feature">
 
-                    <div class="thumbnail" style="height:240px;overflow:hidden">
+                    <div class="thumbnail" style="height:200px;overflow:hidden">
 
                         <a href="{% url 'news:detail' item.id %}"><h3>{{item.title}}</h3> </a>
+                      {% autoescape off %}
                          <p >{{item.body|truncatewords_html:50}}
                       {% endautoescape %}
                     </div>
