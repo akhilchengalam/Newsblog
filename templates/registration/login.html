@@ -12,7 +12,12 @@
           {% csrf_token %}
           {{ form.as_p }}
           <div class="btn-group btn-block">
-                      </div>
+            {% load socialaccount %}
+            {% providers_media_js %}
+            <a href="{% provider_login_url "facebook" method="js_sdk" %}">
+              <button class="btn btn-default half-width" type="button" > Facebook  </button>
+            </a>
+          </div>
           <button class="btn btn-info" type="submit" style="width:300px">Login</button>
         </fieldset>
         <br />
@@ -24,3 +29,54 @@
 </div>
 </div>
 {% endblock %}
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '489688774733419',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<script>
+
+FB.getLoginStatus(function(response) {
+  statusChangeCallback(response);
+});
+
+{
+    status: 'connected',
+    authResponse: {
+        accessToken: '...',
+        expiresIn:'...',
+        signedRequest:'...',
+        userID:'...'
+    }
+}
+</script>
+
+<fb:login-button
+  scope="public_profile,email"
+  onlogin="checkLoginState();">
+</fb:login-button>
+
+<script>
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}</script

@@ -5,7 +5,8 @@ from extras import views
 app_name = 'extras'
 urlpatterns = [
 
-    url(r'^newsletter/$', views.SubscriberView.as_view(), name='newsletter'),
-
+    url(r'^newsletter/$', views.SubscriberView.as_view(), name='subscribe'),
+    url(r'^activatesubscription/(?P<token>[0-9A-Za-z]{32})',
+        views.ActivateSubscription.as_view(), name='activate_subscription'),
 
 ]

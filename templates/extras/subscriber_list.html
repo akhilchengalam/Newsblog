@@ -1,0 +1,38 @@
+<div class="sign_main">
+    <h4 class="side">Sign  Up  for    Newsletter</h4>
+  <div class="sign_up">
+   <p class="sign">Sign up to receive our free newsletters!</p>
+   <form action="/extras/subscribe" method="post" id="newsletter">
+         <!-- <input class="text" placeholder="Name" type="text" name="name" > -->
+
+         {% csrf_token %}
+         <script>{{ msg }}</script>
+         <input class="text" placeholder="Email Address" type="email" name="email" required='required'>
+         <input value="subscribe" type="submit" id="subscribe">
+   </form>
+
+ </div>
+</div>
+
+
+<script>
+
+$("#submit_form").click(function(){
+$(".modal-footer").html('');
+$.ajax( {url: '/extras/subscribe/',type:'post', data: $("#newsletter").serialize(),
+success: function (body,status){
+succ("STATUS : "+body);
+}});
+
+function succ(a){
+a = "<div class='alert alert-info'>" + a + "</div>"
+$(".modal-footer").html(a);
+setTimeout(function() {
+$(".modal-footer").html('');
+}, 3000);
+
+}
+
+});
+
+</script>

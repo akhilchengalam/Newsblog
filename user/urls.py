@@ -40,4 +40,5 @@ urlpatterns = [
     url(r'^updateprofile/$', login_required(Updateprofileview.as_view()), name='profile'),
     #url(r'^profile/$', views.profile_update, name='profile'),
 
+
 ]

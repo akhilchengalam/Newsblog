@@ -51,58 +51,51 @@
 
 							<img class="img-responsive lot" src="images/p1.jpg" alt="">
 					</div></div></div></div>
+					</div>
 
-
-
-
-
-
-
-
-				<!-- requried-jsfiles-for owl -->
-										<script src="js/owl.carousel.js"></script>
-										  <script>
-										  $(document).ready(function() {
-											   $("#owl-demo").owlCarousel({
-												items :1,
-												lazyLoad : true,
-												autoPlay : false,
-												navigation : true,
-												navigationText :  true,
-												pagination : false,
-												responsiveBreakpoints: {
-										portrait: {
-											changePoint:480,
-											visibleItems: 2
-										},
-										landscape: {
-											changePoint:640,
-											visibleItems: 2
-										},
-										tablet: {
-											changePoint:768,
-											visibleItems: 3
-										}
-									}
-												});
-										  });
-										</script>
-						<!-- //requried-jsfiles-for owl -->
-						</div>
-						   <!--/start-sign-up-->
+		<!-------------start-sign-up for News letter-------------->
 						     <div class="sign_main">
 							       <h4 class="side">Sign  Up  for    Newsletter</h4>
 								   <div class="sign_up">
 										<p class="sign">Sign up to receive our free newsletters!</p>
-										<form action="{% url 'extras:newsletter' %}" method="post">
-											<input class="text" placeholder="Name" type="text" name="name" >
-											<input class="text" placeholder="Email Address" type="email" name="email">
-											<input value="submit" type="submit">
+										<form action="{% url 'extras:subscribe' %}" method="post" id="newsletter">
+											    <!-- <input class="text" placeholder="Name" type="text" name="name" > -->
+
+                          {% csrf_token %}
+                          <script>{{ msg }}</script>
+                          <input class="text" placeholder="Email Address" type="email" name="email" required='required'>
+                          <input value="subscribe" type="submit" id="subscribe">
 										</form>
 
 									</div>
 							</div>
-							  <!--//end-sign-up-->
+
+
+<script>
+
+    $("#submit_form").click(function(){
+      $(".modal-footer").html('');
+      $.ajax( {url: '/extras/subscribe/',type:'post', data: $("#newsletter").serialize(),
+          success: function (body,status){
+                succ("STATUS : "+body);
+          }});
+
+      function succ(a){
+        a = "<div class='alert alert-info'>" + a + "</div>"
+        $(".modal-footer").html(a);
+        setTimeout(function() {
+            $(".modal-footer").html('');
+          }, 3000);
+
+      }
+
+    });
+
+</script>
+
+
+		<!-------------//end-sign-up------------------------------>
+
 							 <h4 class="side">Popular Posts</h4>
 								<div class="edit-pics">
 							      <div class="editor-pics">
