@@ -38,6 +38,20 @@ class NewsView(generic.ListView):
     template_name = 'news/news_list.html'
     context_object_name = 'category'
 
+    def get_queryset(self):
+        pk = self.kwargs.get('pk','lat')
+        if pk != 'lat' :
+            q = self.model._default_manager.get(pk=int(pk))
+            return q.news_set.all()
+        else :
+            return self.model._default_manager.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        pk = self.kwargs.get('pk',1)
+        context['pgcat'] = self.model.objects.get(pk=int(pk))
+        return context
+
 
 class DetailView(generic.DetailView):
 

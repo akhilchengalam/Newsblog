@@ -37,7 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_comments',
     'social_django',
+    'social_widgets',
     'news',
     'user',
     'extras',
@@ -147,9 +149,25 @@ EMAIL_USE_TLS = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
     'allauth.account.auth_backends.AuthenticationBackend',
 
 )
 
 
 #SOCIAL ACCOUNT SETTINGS
+
+SOCIAL_AUTH_FACEBOOK_KEY = '489688774733419' # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '7a836b6dbb039e25979f17eb85acc191' # App Secret
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}

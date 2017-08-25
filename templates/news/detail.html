@@ -5,11 +5,34 @@
 
 {% if news %}
     <div class="post">
-        <h1><a href="">{{ news.title }}</a></h1>
+        <h1><a href="">{{ news.title }}</a></h1><br />
 
-        <p>{{ news.created_date }} </p>
+        <p><i>{{ news.posted }}</i> </p><br />
 
         <p>{{ news.body|linebreaksbr }}</p>
+    </div>
+      <br />
+
+<!-----SHARE BUTTONS----->
+      <div>
+
+      <a class="newtab" onclick="window.open('http://www.facebook.com/sharer/sharer.php?u={{news.get_url}}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" href="#">
+                <button class="btn btn-primary" type="button">Share on Facebook</button></a>
+
+      <a class="newtab" onclick="window.open('https://plus.google.com/share?url={{news.get_url}}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" href="#">
+                <button class="btn btn-danger" type="button">Share on Google+</button></a>
+
+      <a class="newtab" onclick="window.open('http://www.linkedin.com/shareArticle?url={{news.get_url}}&title={{news.title}}&summary={{news.body|truncatewords:18}}}}&source=Developers%20Tech%20News', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" href="#">
+                <button class="btn btn-info" type="button">Share on LinkedIn</button></a>
+
+      <a class="newtab" onclick="window.open('https://twitter.com/home?status=Developers%20Tech%20News%20shares{{news.title}}{{news.body|truncatewords:18}}%20-%20{{news.get_url}}', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');" href="#">
+                <button class="btn btn-default" type="button">Share on Twitter</button></a>
+
+  <!------------------------>
+    </div>
+    <br />
+    <div class="comments ">
+               {% include 'comments/commentlist.html' %}
     </div>
 {% endif %}
 {% endblock %}

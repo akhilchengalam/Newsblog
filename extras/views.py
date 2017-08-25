@@ -7,6 +7,8 @@ from django.views import View
 from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
+from django.views import generic
+from news.models import News
 
 
 class SubscriberView(FormView):
@@ -86,3 +88,9 @@ class ActivateSubscription(View):
             return redirect('news:home')
         else:
             return render(request, 'extras/subscription_activation_invalid.html')
+
+
+class CommentsView(generic.DetailView):
+    # template_name = 'comments/loadcomment.html'
+    model = News
+    context_object_name = 'news'

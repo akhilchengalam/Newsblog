@@ -17,19 +17,19 @@
 
 <script>
 
-$("#submit_form").click(function(){
-$(".modal-footer").html('');
-$.ajax( {url: '/extras/subscribe/',type:'post', data: $("#newsletter").serialize(),
-success: function (body,status){
-succ("STATUS : "+body);
+$("#newsletter").click(function(){
+  $(".modal-footer").html('');
+  $.ajax( {url: '/extras/subscribe/',type:'post', data: $("#newsletter").serialize(),
+  success: function (body,status){
+    succ("STATUS : "+body);
 }});
 
 function succ(a){
-a = "<div class='alert alert-info'>" + a + "</div>"
-$(".modal-footer").html(a);
-setTimeout(function() {
-$(".modal-footer").html('');
-}, 3000);
+  a = "<div class='alert alert-info'>" + a + "</div>"
+  $(".modal-footer").html(a);
+  setTimeout(function() {
+    $(".modal-footer").html('');
+  }, 3000);
 
 }
 

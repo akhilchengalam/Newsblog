@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}LOGIN PAGE | USER PROFILE {% endblock %}
 {% block contents %}
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <br /><br />
 <div class="container" align="center">
@@ -11,13 +12,20 @@
         <fieldset>
           {% csrf_token %}
           {{ form.as_p }}
+          <br />
           <div class="btn-group btn-block">
-            {% load socialaccount %}
+            <!-- {% load socialaccount %}
             {% providers_media_js %}
             <a href="{% provider_login_url "facebook" method="js_sdk" %}">
               <button class="btn btn-default half-width" type="button" > Facebook  </button>
-            </a>
+            </a> -->
+            <a href="{% url 'google_login' %}">
+              <button class="btn btn-default half-width" type="button" style="color:1a75ff" > Google </button></a>
+            <a href="{% url 'social:begin' 'facebook' %}">
+              <button class="btn btn-default half-width" type="button" > Facebook  </button></a>
+
           </div>
+          <br /><br />
           <button class="btn btn-info" type="submit" style="width:300px">Login</button>
         </fieldset>
         <br />
@@ -31,7 +39,7 @@
 {% endblock %}
 
 
-<script>
+<!-- <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '489688774733419',
@@ -79,4 +87,4 @@ function checkLoginState() {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
   });
-}</script
+}</script -->

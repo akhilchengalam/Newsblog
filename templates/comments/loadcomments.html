@@ -1,0 +1,21 @@
+{% load comments %}
+{% get_comment_count for news.news news.id as comment_count %}
+<div class="alert alert-info">
+  <p>{{ comment_count }} Comments</p>
+</div><hr />
+
+  {% get_comment_list for news.news news.id as comment_list %}
+  {% if comment_list %}
+      <div class="alert alert-danger">
+        {% for comment in comment_list %}
+        <a href="#c{{ comment.id }}">Link</a><br/>
+        <span id="c{{ comment.id }}"></span>
+
+          {{ comment.user_name }}<span class="pull-right"> <b>-on</b> {{ comment.submit_date }}</span><br/>
+          {{ comment.comment }}
+          <!-- <a href="{% get_comment_permalink comment %}">[ permalink ] </a> -->
+          <hr />
+        {% endfor %}
+      </div>
+  {% endif %}
+  <hr />
