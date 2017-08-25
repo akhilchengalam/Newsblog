@@ -6,12 +6,15 @@ import builtins
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from django.shortcuts import render
-
-# Create your views here.
+from django.dispatch import receiver
 from django.views import generic
 from django.http import HttpResponse, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import *
+from django.db.models.signals import post_save
+from django.template import loader, Context
+from django.core.mail import send_mail
+from extras.models import Subscribers
 
 
 class HomeView(generic.ListView):
@@ -81,3 +84,29 @@ class Searchview(generic.ListView):
         category_list = NewsCatagories.objects.all()
         context['category_list'] = category_list
         return context
+
+
+
+@receiver(post_save, dispatch_uid="updated_news", sender=News)
+def my_handler(sender, instance,  **kwargs):
+
+    html_template = loader.get_template('extras/subscription_mail.html')
+    template = loader.get_template('extras/subscription_text.html')
+    context = { 'news': instance }
+    html_message  = html_template.render(context)
+    message = template.render(context)
+    send_mail(
+        'ReportersNews - New News Published - %s'%instance.title,
+        message,
+        'subscription@thereportersnews.com',
+        list_of_subscribers(),
+        fail_silently=False,
+        html_message=html_message,
+        )
+    return HttpResponse()
+
+post_save.connect(my_handler, sender=News)
+
+def list_of_subscribers():
+    ls = Subscribers.objects.all()
+    return [n for n in ls]
