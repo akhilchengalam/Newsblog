@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}STATUS{% endblock %}
+
+{% block contents %}
+
+  <div class="alert alert-success">
+    {% if msg %}
+      {% autoescape off %}{{ msg }} {% endautoescape %}
+    {% else %}
+  </div>
+
+{% endblock %}

@@ -1,10 +1,10 @@
-{% extends 'base1.html' %}
+{% extends 'base.html' %}
 
 
 {% block contents %}
 
 {% if news %}
-    <div class="post">
+    <div class="post thumbnail " style="overflow:hidden" >
         <h1><a href="">{{ news.title }}</a></h1><br />
 
         <p><i>{{ news.posted }}</i> </p><br />

@@ -1,4 +1,4 @@
-{% extends 'base1.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}News Category List{% endblock %}
 
@@ -10,7 +10,7 @@
     <div class="date">
       <p>{{ n.created_date }} </p>
     </div>
-    <p>{{ n.body|truncatechars_html:200 | linebreaksbr }}</p>
+    <p>{{ n.body|truncatechars_html:600 | linebreaksbr }}</p>
 
   </div>
 {% endfor %}

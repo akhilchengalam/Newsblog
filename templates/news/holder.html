@@ -1,5 +1,6 @@
 {% for item in latest %}
 
+  <div class="post thumbnail " style="overflow:hidden" >
     <h1><a href="{% url 'news:detail' item.id %}">{{ item.title }}</a></h1>
     <div class="container-fluid">
     <div class="date">
@@ -9,4 +10,5 @@
     <br /><br /><br />
 
     </div>
+  </div>
 {% endfor %}

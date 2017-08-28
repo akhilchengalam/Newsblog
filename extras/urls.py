@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^activatesubscription/(?P<token>[0-9A-Za-z]{32})',
         views.ActivateSubscription.as_view(), name='activate_subscription'),
     url(r'^comment/(?P<pk>[-\d]+)', views.CommentsView.as_view(), name='refresh_post'),
+    url(r'^contact/$', views.ContactView.as_view(), name='contact'),
 
 ]

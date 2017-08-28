@@ -61,12 +61,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</ul>
 					</li>
 
-						<li><a href="contact.html"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
+						<li><a href="{% url 'extras:contact' %}"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
 						<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 					{% else %}
 						<li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
 						<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						<li><a href="contact.html"><span class="glyphicon glyphicon-user"></span> Contact </a></li>
+						<li><a href="{% url 'extras:contact' %}"><span class="glyphicon glyphicon-user"></span> Contact </a></li>
 					{% endif %}
 
 
@@ -152,8 +152,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="clearfix"></div>
 </div>
 <!---------------------------------------------- END  CONTENTS HTML  ---------------------------------------------------------------->
+</div>
 
-
-<div class="copyright footer nav navbar-inverse">
+<div class="copyright footer col-md-12">
 	<p>&copy; The Reporters News  </p>
 </div>

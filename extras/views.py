@@ -2,19 +2,21 @@ from django.shortcuts import render
 from .models import *
 from django.views.generic import FormView
 from django.utils.crypto import get_random_string
-from .forms import SubscribersForm
+from .forms import SubscribersForm, ContactForm
 from django.views import View
 from django.http import HttpResponse, Http404
-from django.core.mail import send_mail
+from django.core.mail import send_mail, mail_managers
 from django.shortcuts import render, redirect
 from django.views import generic
 from news.models import News
+from django.template import Context
+from django.template.loader import get_template
 
 
 class SubscriberView(FormView):
     model_form = SubscribersForm
     model = Subscribers
-    # template_name = "extras/subscriber_list.html"
+    template_name = "extras/subscriber_status.html"
     fields = ['email',]
     success_url = '/'
 
@@ -50,7 +52,7 @@ class SubscriberView(FormView):
 
                     From The Reporters News.com
                     """%(m.email, m.token),
-                    'activate-subscription@reportersnews.dtn',
+                    'activate-subscription@reportersnews.com',
                     [m.email],
                     fail_silently=True,
                     )
@@ -94,3 +96,29 @@ class CommentsView(generic.DetailView):
     # template_name = 'comments/loadcomment.html'
     model = News
     context_object_name = 'news'
+
+
+class ContactView(generic.TemplateView):
+    template_name = 'extras/contactus.html'
+    model_form = ContactForm
+
+
+    def post(self, request, *args, **kwargs):
+        form = self.model_form(request.POST)
+        if form.is_valid:
+            print('form valid')
+            name = form['name'].value()
+            email = form['email'].value()
+            mobile = form['mobile'].value()
+            message = form['message'].value()
+
+            content = "%s %s %s %s " % (name,email,mobile,message)
+
+            mail_managers('New Contact form submission',content,
+                fail_silently=False)
+
+
+        else:
+            form = ContactForm()
+
+        return render(request, 'extras/contactus.html', {'form': form})
