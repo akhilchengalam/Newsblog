@@ -6,7 +6,7 @@
 
 {% for n in category %}
   <div class="post thumbnail " style="overflow:hidden" >
-    <h1><a href="{% url 'news:detail' n.id %}">{{ n.title }}</a></h1>
+    <h1><a href="{% url 'news:detail' n.id %}">{{ n.title }}</a></h1><br />
     <div class="date">
       <p>{{ n.created_date }} </p>
     </div>

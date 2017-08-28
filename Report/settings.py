@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django_comments',
     'social_django',
     'social_widgets',
@@ -50,10 +51,11 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.google',
+    'robots',
 
 )
 
-SITE_ID = 1
+SITE_ID = 2
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
@@ -64,7 +66,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    
+
 )
 
 ROOT_URLCONF = 'Report.urls'
@@ -116,12 +118,11 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                'django.template.context_processors.request',
 
             ],
         },
@@ -150,6 +151,7 @@ EMAIL_USE_TLS = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    # 'social.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'allauth.account.auth_backends.AuthenticationBackend',
 
@@ -160,6 +162,9 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = '489688774733419' # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '7a836b6dbb039e25979f17eb85acc191' # App Secret
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =  '184919632724-4gsqcqb0hi204vkc3avh7ca0alssbmb8.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET =  'LVB5fvS9varZ1exYYbEuS0IZ'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -172,6 +177,5 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
-
 
 MANAGERS =[('Akhil', 'akhilanil.sayone@gmail.com'),('Akhil', 'thereportersnews@gmail.com')]

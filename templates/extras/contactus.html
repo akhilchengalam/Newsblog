@@ -13,7 +13,7 @@
 	}
 </style>
 {% block contents %}
-<div class="container">
+<div class="container" align="center">
 <div class="col-md-5">
     <div class="form-area">
         <form role="form" action="{% url 'extras:contact' %}" method="post">
@@ -33,11 +33,11 @@
 						<input type="text" class="form-control" id="subject" name="message" placeholder="Subject" required>
 					</div>
 
-        <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right" max_length=500>Submit</button>
-        </form>
+        <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit</button>
+      </form>
     </div>
 </div>
-</div>
+</div><br />
 {% endblock %}
 
 <script>

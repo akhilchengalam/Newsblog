@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}LOGIN PAGE | USER PROFILE {% endblock %}
 {% block contents %}
-<script src="https://apis.google.com/js/platform.js" async defer></script>
+{% load socialaccount %}
+<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 <br /><br />
 <div class="container" align="center">
@@ -14,13 +16,10 @@
           {{ form.as_p }}
           <br />
           <div class="btn-group btn-block">
-            <!-- {% load socialaccount %}
-            {% providers_media_js %}
-            <a href="{% provider_login_url "facebook" method="js_sdk" %}">
-              <button class="btn btn-default half-width" type="button" > Facebook  </button>
-            </a> -->
-            <a href="{% url 'google_login' %}">
+
+            <a href="{% provider_login_url "google" method="oauth2" %}">
               <button class="btn btn-default half-width" type="button" style="color:1a75ff" > Google </button></a>
+
             <a href="{% url 'social:begin' 'facebook' %}">
               <button class="btn btn-default half-width" type="button" > Facebook  </button></a>
 
@@ -37,54 +36,3 @@
 </div>
 </div>
 {% endblock %}
-
-
-<!-- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '489688774733419',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
-
-<script>
-
-FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
-});
-
-{
-    status: 'connected',
-    authResponse: {
-        accessToken: '...',
-        expiresIn:'...',
-        signedRequest:'...',
-        userID:'...'
-    }
-}
-</script>
-
-<fb:login-button
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
-
-<script>
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}</script -->

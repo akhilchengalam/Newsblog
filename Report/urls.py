@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-
+from django.contrib.sitemaps.views import sitemap
 from django.contrib import admin
 
 
@@ -16,5 +16,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^comments/', include('django_comments.urls')),
+
+
 
 ]
