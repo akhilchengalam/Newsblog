@@ -8,6 +8,6 @@ urlpatterns = [
     url(r'^newscatagory/(?P<pk>[0-9]+)/$', views.NewsView.as_view(), name='category'),
     url(r'^newsdetails/(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     url(r'^search', views.Searchview.as_view(), name='search'),
-    # url(r'^robots\.txt$', include('robots.urls')),
+    url(r'^make/', views.rand,name='rand'),
 
 ]

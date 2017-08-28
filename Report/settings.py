@@ -79,8 +79,13 @@ WSGI_APPLICATION = 'Report.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd3pbr0valabjun',
+        'HOST': 'ec2-107-22-211-182.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'abvpzeprmithub',
+        'PASSWORD': 'ad6e96f122ad54327a9e8db89bb1783a783e996b9486f61d862d65f95c234ccb',
+
     }
 }
 

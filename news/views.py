@@ -15,6 +15,7 @@ from django.db.models.signals import post_save
 from django.template import loader, Context
 from django.core.mail import send_mail
 from extras.models import Subscribers
+from faker import Factory
 
 
 class HomeView(generic.ListView):
@@ -40,6 +41,7 @@ class NewsView(generic.ListView):
     model = NewsCatagories
     template_name = 'news/news_list.html'
     context_object_name = 'category'
+    paginate_by = 10
 
     def get_queryset(self):
         pk = self.kwargs.get('pk','lat')
@@ -110,3 +112,18 @@ post_save.connect(my_handler, sender=News)
 def list_of_subscribers():
     ls = Subscribers.objects.all()
     return [n for n in ls]
+
+
+def rand(request):
+    r = Factory.create()
+    num = 1
+    num = request.GET['id']
+    n=90
+    while(n>0):
+        q = News()
+        q.title = "%s"%(r.text()[:20])
+        q.catagory = NewsCatagories.objects.get(id=num)
+        q.body = r.text()
+        q.save()
+        n-=1
+    return HttpResponse("Done ! ")
