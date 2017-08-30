@@ -55,6 +55,11 @@ class NewsView(generic.ListView):
         context = super().get_context_data(**kwargs)
         pk = self.kwargs.get('pk',1)
         context['pgcat'] = self.model.objects.get(pk=int(pk))
+        m = self.kwargs.get('pk','lat')
+        context['current_catag'] = NewsCatagories.objects.get(pk=m)
+        newslist = NewsCatagories.objects.order_by('-id')
+        context['news_list'] = newslist
+
         return context
 
 
@@ -65,6 +70,12 @@ class DetailView(generic.DetailView):
     model = News
     template_name = 'news/detail.html'
     context_object_name = 'news'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        newslist = NewsCatagories.objects.order_by('-id')
+        context['news_list'] = newslist
+        return context
 
 
 class Searchview(generic.ListView):
@@ -85,6 +96,8 @@ class Searchview(generic.ListView):
         context = super().get_context_data()
         category_list = NewsCatagories.objects.all()
         context['category_list'] = category_list
+        newslist = NewsCatagories.objects.order_by('-id')
+        context['news_list'] = newslist
         return context
 
 

@@ -19,8 +19,8 @@ class NewsCatagories(models.Model):
 
 
 class News(models.Model):
-    title = models.CharField(max_length=127)
-    body = models.TextField(max_length=1024)
+    title = models.CharField(max_length=130)
+    body = models.TextField()
     slug = AutoSlugField(populate_from='title',
                          unique_with=['title'],
                          unique=True, always_update=True)
@@ -32,7 +32,7 @@ class News(models.Model):
 
     def get_absolute_url(self):
         return reverse('news:detail',kwargs={'pk':self.pk})
-        
+
     class Meta:
         ordering = ["posted"]
         get_latest_by = "posted"

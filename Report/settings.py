@@ -49,7 +49,6 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     #Social login providers
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.google',
     'robots',
 
@@ -141,7 +140,7 @@ LOGOUT_REDIRECT_URL = 'news:home'
 
 
 
-DOMAIN = "localhost:8000"
+DOMAIN = "https://reporternews.herokuapp.com"
 
 
 # EMAIL CONFIGURATIONS
@@ -157,7 +156,7 @@ EMAIL_USE_TLS = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    # 'social.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'allauth.account.auth_backends.AuthenticationBackend',
 
@@ -169,19 +168,19 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_FACEBOOK_KEY = '489688774733419' # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '7a836b6dbb039e25979f17eb85acc191' # App Secret
 
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =  '184919632724-4gsqcqb0hi204vkc3avh7ca0alssbmb8.apps.googleusercontent.com'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET =  'LVB5fvS9varZ1exYYbEuS0IZ'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =  '184919632724-tqr8tt08nbit4m0a0n5tllbbrtt88gge.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET =  'LDmvLlt1WSJlJRktSEsu1BKj'
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
 
 MANAGERS =[('Akhil', 'akhilanil.sayone@gmail.com'),('Akhil', 'thereportersnews@gmail.com')]

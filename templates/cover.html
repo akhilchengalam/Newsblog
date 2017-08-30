@@ -2,11 +2,8 @@
 
 <!DOCTYPE html>
 <head>
-  {% block title %}LOGIN PAGE | USER PROFILE {% endblock %}
-  {% load i18n %}
-  {% load account socialaccount %}
-  {% get_providers as socialaccount_providers %}
 
+<title>{% block title %}{% endblock %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Motive Mag Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
@@ -31,9 +28,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 
 
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -87,48 +84,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!----------------------------------------------  CONTENTS HTML  ---------------------------------------------------------------->
 <div class="mag-inner">
-	<div class="col-md-12 mag-innert-left">
-		{% block contents %}
-
-
-    <br /><br /><br /><br /><br /><br />
-    <div class="container" align="center">
-
-      <div >
-          <h2>Login</h2>
-          <form method="post">
-            <fieldset>
-              {% csrf_token %}
-              {{ form.as_p }}
-              <br />
-              <div class="btn-group btn-block">
-
-                <!-- <a href="{% provider_login_url  "google" method="oauth2" %}">
-                  <button class="btn btn-default half-width" type="button" style="color:1a75ff" > Google </button></a> -->
-
-                  <a href="{% url 'social:begin' 'google-oauth2' %}">
-                    <button class="btn btn-default half-width" type="button" style="color:1a75ff" > Google </button>
-
-                <a href="{% url 'social:begin' 'facebook' %}">
-                  <button class="btn btn-default half-width" type="button" > Facebook  </button></a>
-
-              </div>
-              <br /><br />
-              <button class="btn btn-info" type="submit" style="width:300px">Login</button>
-            </fieldset>
-            <br />
-            <br />
-              <a href="{% url 'password_reset' %}">Forgot Password? </a>
-              <br /><br /><br /><br /><br /><br /><br />
-          </form>
-
-    </div>
-    </div>
-    {% endblock %}
-
-
+	<div class="col-md-8 mag-innert-left">
+		{% block contents %} {% endblock %}
 	</div>
-
+	<div class="col-md-4 mag-innert-right">
+		{% include 'asideblock.html' %}
+	</div>
 	 <div class="clearfix"></div>
 </div>
 <!---------------------------------------------- END  CONTENTS HTML  ---------------------------------------------------------------->
@@ -137,3 +98,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="copyright footer col-md-12">
 	<p>&copy; The Reporters News  </p>
 </div>
+
+</body>

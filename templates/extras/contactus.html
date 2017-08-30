@@ -1,5 +1,90 @@
-{% extends 'base.html' %}
 
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+
+{% block title %}REGISTRATION | USER PROFILE {% endblock %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Motive Mag Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'css/bootstrap-3.1.1.min.css' %}" rel="stylesheet" type="text/css">
+<!-- Custom Theme files -->
+<link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+<script src="{% static 'js/jquery.min.js' %}"> </script>
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
+<!--/script-->
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+</script>
+
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+</head>
+
+<body>
+<div class="header navbar-fixed-top" id="home">
+ <div class="content white">
+  <nav class="navbar navbar-inverse " role="navigation">
+     <div class="container ">
+
+    <!--/.navbar-header-->
+
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+      <div class="navbar-header ">
+          <a class="navbar-brand" href="{% url 'news:home' %}"><h1>The Reporters <span>News</span></h1> </a>
+        </div>
+      <ul class="nav navbar-nav pull-right">
+         <li><a href="{% url 'news:home' %}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+{% if request.user.is_authenticated %}
+<li><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+  {{ request.user.username }}<span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="{% url 'profile' %}">Update Profile</a></li>
+      <li><a href="{% url 'updatepassword' %}">Change Password</a></li>
+    </ul>
+</li>
+
+<li><a href="{% url 'extras:contact' %}"><span class="glyphicon glyphicon-user"></span>Contact</a></li>
+<li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+{% else %}
+<li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+<li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+<li><a href="{% url 'extras:contact' %}"><span class="glyphicon glyphicon-user"></span> Contact </a></li>
+{% endif %}
+
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+
+      </ul>
+
+    </div>
+    <!--/.navbar-collapse-->
+ <!--/.navbar-->
+   </div>
+</nav>
+</div>
+</div>
+
+<!----------------------------------------------  CONTENTS HTML  ---------------------------------------------------------------->
 <style>
 .red{
     color:red;
@@ -13,6 +98,7 @@
 	}
 </style>
 {% block contents %}
+<br /><br /><br /><br /><br /><br /><br />
 <div class="container" align="center">
 <div class="col-md-5">
     <div class="form-area">
@@ -30,7 +116,8 @@
 						<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" id="subject" name="message" placeholder="Subject" required>
+            <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here." rows="7"></textarea>
+
 					</div>
 
         <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit</button>
@@ -62,3 +149,23 @@ $(document).ready(function(){
 });
 
 </script>
+
+<!---------------------------------------------- END  CONTENTS HTML  ---------------------------------------------------------------->
+</div>
+
+<div class="copyright footer col-md-12">
+	<p>&copy; The Reporters News  </p>
+</div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+<!----------------------------------------------------------------------------------->
