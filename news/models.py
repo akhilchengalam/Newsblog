@@ -19,13 +19,15 @@ class NewsCatagories(models.Model):
 
 
 class News(models.Model):
-    title = models.CharField(max_length=127)
-    body = models.TextField(max_length=1024)
+    title = models.CharField(max_length=162)
+    body = models.TextField(max_length=4000)
     slug = AutoSlugField(populate_from='title',
                          unique_with=['title'],
                          unique=True, always_update=True)
     catagory = models.ForeignKey('NewsCatagories', on_delete=models.SET(1))
     posted = models.DateTimeField(auto_now_add=dt.now(), blank=True, null=True)
+    published = models.BooleanField(default=False)
+    subscribed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

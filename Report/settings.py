@@ -49,9 +49,14 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     #Social login providers
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.google',
     'robots',
+    'fluent_dashboard',
+
+    'admin_tools',     # for staticfiles in Django 1.3
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
 
 )
 
@@ -78,17 +83,25 @@ WSGI_APPLICATION = 'Report.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd3pbr0valabjun',
-        'HOST': 'ec2-107-22-211-182.compute-1.amazonaws.com',
-        'PORT': '5432',
-        'USER': 'abvpzeprmithub',
-        'PASSWORD': 'ad6e96f122ad54327a9e8db89bb1783a783e996b9486f61d862d65f95c234ccb',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd3pbr0valabjun',
+#         'HOST': 'ec2-107-22-211-182.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#         'USER': 'abvpzeprmithub',
+#         'PASSWORD': 'ad6e96f122ad54327a9e8db89bb1783a783e996b9486f61d862d65f95c234ccb',
+#
+#     }
+# }
 
-    }
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   }
 }
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -114,6 +127,7 @@ STATICFILES_DIRS = (
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_2')
 
+CELERY_BROKER_URL = 'amqp://localhost'
 
 
 TEMPLATES = [
@@ -141,7 +155,7 @@ LOGOUT_REDIRECT_URL = 'news:home'
 
 
 
-DOMAIN = "localhost:8000"
+DOMAIN = "https://reporternews.herokuapp.com"
 
 
 # EMAIL CONFIGURATIONS
@@ -157,7 +171,7 @@ EMAIL_USE_TLS = True
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    # 'social.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'allauth.account.auth_backends.AuthenticationBackend',
 
@@ -169,19 +183,19 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_FACEBOOK_KEY = '489688774733419' # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '7a836b6dbb039e25979f17eb85acc191' # App Secret
 
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =  '184919632724-4gsqcqb0hi204vkc3avh7ca0alssbmb8.apps.googleusercontent.com'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET =  'LVB5fvS9varZ1exYYbEuS0IZ'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY =  '184919632724-tqr8tt08nbit4m0a0n5tllbbrtt88gge.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET =  'LDmvLlt1WSJlJRktSEsu1BKj'
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'google': {
+#         'SCOPE': [
+#             'profile',
+#             'email',
+#         ],
+#         'AUTH_PARAMS': {
+#             'access_type': 'online',
+#         }
+#     }
+# }
 
 MANAGERS =[('Akhil', 'akhilanil.sayone@gmail.com'),('Akhil', 'thereportersnews@gmail.com')]

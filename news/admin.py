@@ -4,7 +4,7 @@ from .models import *
 
 # Register your models here.
 class NewsAdmin(admin.ModelAdmin):
-    fields = ('title', 'catagory', 'body')
+    fields = ('title', 'catagory', 'body', 'published')
 
     class meta:
         model = News

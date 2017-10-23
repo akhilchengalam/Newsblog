@@ -2,7 +2,9 @@
 {% load static %}
 {% block title %}LOGIN PAGE | USER PROFILE {% endblock %}
 {% block contents %}
-{% load socialaccount %}
+{% load i18n %}
+{% load account socialaccount %}
+{% get_providers as socialaccount_providers %}
 <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
 <br /><br />
@@ -17,8 +19,11 @@
           <br />
           <div class="btn-group btn-block">
 
-            <a href="{% provider_login_url "google" method="oauth2" %}">
-              <button class="btn btn-default half-width" type="button" style="color:1a75ff" > Google </button></a>
+            <!-- <a href="{% provider_login_url  "google" method="oauth2" %}">
+              <button class="btn btn-default half-width" type="button" style="color:1a75ff" > Google </button></a> -->
+
+              <a href="{% url 'social:begin' 'google-oauth2' %}">
+                <button class="btn btn-default half-width" type="button" style="color:1a75ff" > Google </button>
 
             <a href="{% url 'social:begin' 'facebook' %}">
               <button class="btn btn-default half-width" type="button" > Facebook  </button></a>

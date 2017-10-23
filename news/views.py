@@ -97,14 +97,17 @@ def my_handler(sender, instance,  **kwargs):
     context = { 'news': instance }
     html_message  = html_template.render(context)
     message = template.render(context)
-    send_mail(
-        'ReportersNews - New News Published - %s'%instance.title,
-        message,
-        'subscription@thereportersnews.com',
-        list_of_subscribers(),
-        fail_silently=False,
-        html_message=html_message,
-        )
+    # news = News.objects.filter(title=instance.title)
+    if instance.published == True:
+        send_mail(
+            'ReportersNews - New News Published - %s'%instance.title,
+            message,
+            'subscription@thereportersnews.com',
+            list_of_subscribers(),
+            fail_silently=False,
+            html_message=html_message,
+            )
+    instance.subscribed=True
     return HttpResponse()
 
 post_save.connect(my_handler, sender=News)
@@ -127,3 +130,5 @@ def rand(request):
         q.save()
         n-=1
     return HttpResponse("Done ! ")
+
+
